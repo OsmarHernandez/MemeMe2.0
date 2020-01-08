@@ -28,10 +28,6 @@ class ViewController: UIViewController {
     
     var meme: Meme?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -51,6 +47,10 @@ class ViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         unsubscribeFromKeyboardNotifications()
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     @IBAction func pickAnImageFromAlbumOrCamera(_ sender: UIBarButtonItem) {
@@ -93,7 +93,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func cancelMemedImage(_ sender: UIBarButtonItem) {
-        print("Cancel... return to launch state")
+        imagePickerView.image = nil
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
+        actionButton.isEnabled = false
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
