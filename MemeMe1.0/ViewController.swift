@@ -26,6 +26,8 @@ class ViewController: UIViewController {
         NSAttributedString.Key.strokeWidth: -3.0,
     ]
     
+    var meme: Meme?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -41,7 +43,7 @@ class ViewController: UIViewController {
         topTextField.textAlignment = .center
         bottomTextField.textAlignment = .center
         
-        actionButton.isEnabled = false
+        actionButton.isEnabled = imagePickerView.image != nil
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
@@ -51,18 +53,43 @@ class ViewController: UIViewController {
         unsubscribeFromKeyboardNotifications()
     }
     
-    @IBAction func pickAnImageFromCamera(_ sender: UIBarButtonItem) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
+    @IBAction func pickAnImageFromAlbumOrCamera(_ sender: UIBarButtonItem) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = sender.tag == 0 ? .photoLibrary : .camera
+        present(imagePickerController, animated: true, completion: nil)
     }
     
-    @IBAction func pickAnImageFromAlbum(_ sender: UIBarButtonItem) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+    @IBAction func shareButton(_ sender: UIBarButtonItem) {
+        let memedImage = generateMemedImage()
+        let activityViewController: UIActivityViewController
+            
+        activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        present(activityViewController, animated: true, completion: nil)
+        
+        activityViewController.completionWithItemsHandler = { (activity, success, items, error) in
+            guard error == nil else {
+                print("The following error was found: \(error!)")
+                return
+            }
+            
+            let message: String
+            
+            if success {
+                self.save(image: memedImage)
+                message = activity == .saveToCameraRoll ? "Meme successfully saved" : "Meme successfully shared"
+            } else {
+                message = "Something went wrong, please try again"
+            }
+            
+            let alertController = UIAlertController(title: "MemeMe 1.0", message: message, preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Ok", style: .default) { (action) in
+                self.dismiss(animated: true, completion: nil)
+            }
+            
+            alertController.addAction(alertAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func cancelMemedImage(_ sender: UIBarButtonItem) {
@@ -99,10 +126,8 @@ class ViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    func save() {
-        let memedImage = generateMemedImage()
-        
-        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
+    func save(image memedImage: UIImage) {
+        meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
     }
     
     func generateMemedImage() -> UIImage {

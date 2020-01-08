@@ -25,7 +25,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <items>
                                     <navigationItem id="5fI-n1-NFA">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="5sa-AY-qlg"/>
+                                        <barButtonItem key="leftBarButtonItem" tag="2" systemItem="action" id="5sa-AY-qlg">
+                                            <connections>
+                                                <action selector="shareButton:" destination="BYZ-38-t0r" id="eLi-YW-Y5x"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="Ecd-BJ-fub">
                                             <connections>
                                                 <action selector="cancelMemedImage:" destination="BYZ-38-t0r" id="87O-E8-Upo"/>
@@ -38,15 +42,15 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="1gH-82-8Hk"/>
-                                    <barButtonItem systemItem="camera" id="Z9C-3P-PSR">
+                                    <barButtonItem tag="1" systemItem="camera" id="Z9C-3P-PSR">
                                         <connections>
-                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="mtQ-9V-FPA"/>
+                                            <action selector="pickAnImageFromAlbumOrCamera:" destination="BYZ-38-t0r" id="PH0-Gy-LtH"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="aT2-Sf-hKJ"/>
                                     <barButtonItem title="Album" id="aZw-w2-r8p">
                                         <connections>
-                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="0Zn-TJ-RdU"/>
+                                            <action selector="pickAnImageFromAlbumOrCamera:" destination="BYZ-38-t0r" id="Atn-o3-wCc"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Iar-UO-k0s"/>

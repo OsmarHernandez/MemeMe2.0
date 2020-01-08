@@ -59,8 +59,8 @@
 				20BFB19923C142CE00D35274 /* ViewController.swift */,
 				20BFB19B23C142CE00D35274 /* Main.storyboard */,
 				20BFB1AA23C1786500D35274 /* Meme.swift */,
-				20BFB1A923C16EAA00D35274 /* Supporting Files */,
 				20BFB1A323C142CF00D35274 /* Info.plist */,
+				20BFB1A923C16EAA00D35274 /* Supporting Files */,
 			);
 			path = MemeMe1.0;
 			sourceTree = "<group>";
