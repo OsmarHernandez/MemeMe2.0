@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  MemeMe1.0
+//  MemeMe2.0
 //
 //  Created by Osmar Hernández on 04/01/20.
 //  Copyright © 2020 personal. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  MemeMe1.0
+//  MemeMe2.0
 //
 //  Created by Osmar Hernández on 04/01/20.
 //  Copyright © 2020 personal. All rights reserved.
@@ -82,7 +82,7 @@ class ViewController: UIViewController {
                 message = "Something went wrong, please try again"
             }
             
-            let alertController = UIAlertController(title: "MemeMe 1.0", message: message, preferredStyle: .alert)
+            let alertController = UIAlertController(title: "MemeMe 2.0", message: message, preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "Ok", style: .default) { (action) in
                 self.dismiss(animated: true, completion: nil)
             }
