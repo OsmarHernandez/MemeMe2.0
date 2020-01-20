@@ -10,21 +10,20 @@ import UIKit
 
 class MemeDetailViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    var meme: Meme!
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        imageView.image = meme.memedImage
+        tabBarController?.tabBar.isHidden = true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        tabBarController?.tabBar.isHidden = true
     }
-    */
-
 }

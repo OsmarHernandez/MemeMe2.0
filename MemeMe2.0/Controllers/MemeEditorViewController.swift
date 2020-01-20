@@ -39,12 +39,18 @@ class MemeEditorViewController: UIViewController {
         
         actionButton.isEnabled = imagePickerView.image != nil
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        
+        navigationController?.navigationBar.isHidden = true
+        tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         unsubscribeFromKeyboardNotifications()
+        
+        navigationController?.navigationBar.isHidden = false
+        tabBarController?.tabBar.isHidden = false
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -82,7 +88,7 @@ class MemeEditorViewController: UIViewController {
             
             let alertController = UIAlertController(title: "MemeMe 2.0", message: message, preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "Ok", style: .default) { (action) in
-                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popToRootViewController(animated: true)
             }
             
             alertController.addAction(alertAction)
@@ -95,6 +101,8 @@ class MemeEditorViewController: UIViewController {
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
         actionButton.isEnabled = false
+        
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
