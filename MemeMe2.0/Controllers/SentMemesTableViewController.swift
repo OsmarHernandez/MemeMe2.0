@@ -14,7 +14,7 @@ private let memeDetailViewControllerIdentifier = "MemeDetailViewController"
 class SentMemesTableViewController: UITableViewController {
     
     var memes: [Meme]! {
-        return (UIApplication.shared.delegate as! AppDelegate).memes
+        return MemeSingleton.shared.memes
     }
 
     override func viewDidLoad() {
@@ -38,9 +38,14 @@ class SentMemesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let memeTableViewCell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as! MemeTableViewCell
+        let memeTableViewCell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)!
+        let meme = memes[indexPath.row]
         
-        memeTableViewCell.configureUI(meme: memes[indexPath.row])
+        memeTableViewCell.textLabel?.text = meme.topText + "..." + meme.bottomText
+        memeTableViewCell.imageView?.image = meme.memedImage
+        
+         memeTableViewCell.textLabel?.textAlignment = .center
+        memeTableViewCell.imageView?.contentMode = .scaleAspectFit
         
         return memeTableViewCell
     }

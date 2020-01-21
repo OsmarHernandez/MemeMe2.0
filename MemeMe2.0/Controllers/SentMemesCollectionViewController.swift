@@ -14,12 +14,14 @@ private let memeDetailViewControllerIdentifier = "MemeDetailViewController"
 class SentMemesCollectionViewController: UICollectionViewController {
 
     var memes: [Meme]! {
-        return (UIApplication.shared.delegate as! AppDelegate).memes
+        return MemeSingleton.shared.memes
     }
+    
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.clearsSelectionOnViewWillAppear = true
     }
     

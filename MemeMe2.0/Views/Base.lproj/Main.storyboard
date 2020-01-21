@@ -78,6 +78,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="flowLayout" destination="C8A-sB-24B" id="DVC-72-cYi"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r46-yI-hM8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -92,38 +95,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="memeTableViewCell" rowHeight="110" id="NZF-5R-ctt" customClass="MemeTableViewCell" customModule="MemeMe2_0" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="110"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="memeTableViewCell" id="bUb-Gn-Zca">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NZF-5R-ctt" id="neq-DB-LZR">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bUb-Gn-Zca" id="dis-Ji-1Gp">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Nw-Iv-QEd">
-                                            <rect key="frame" x="0.0" y="0.0" width="166" height="109.5"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWy-zL-9OS">
-                                            <rect key="frame" x="174" y="40" width="185" height="29.5"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="QWy-zL-9OS" firstAttribute="centerY" secondItem="neq-DB-LZR" secondAttribute="centerY" id="A0Q-7T-SHg"/>
-                                        <constraint firstAttribute="bottom" secondItem="7Nw-Iv-QEd" secondAttribute="bottom" id="GBe-Lb-XVN"/>
-                                        <constraint firstItem="7Nw-Iv-QEd" firstAttribute="top" secondItem="neq-DB-LZR" secondAttribute="top" id="QsZ-wk-qrt"/>
-                                        <constraint firstItem="QWy-zL-9OS" firstAttribute="leading" secondItem="7Nw-Iv-QEd" secondAttribute="trailing" constant="8" id="eyw-b9-Lm3"/>
-                                        <constraint firstAttribute="trailing" secondItem="QWy-zL-9OS" secondAttribute="trailing" constant="16" id="jZs-7E-FFa"/>
-                                        <constraint firstItem="7Nw-Iv-QEd" firstAttribute="leading" secondItem="neq-DB-LZR" secondAttribute="leading" id="kbJ-MR-wou"/>
-                                        <constraint firstAttribute="trailing" secondItem="7Nw-Iv-QEd" secondAttribute="trailing" constant="209" id="mGg-Fm-VyP"/>
-                                    </constraints>
                                 </tableViewCellContentView>
-                                <inset key="separatorInset" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <connections>
-                                    <outlet property="memeImageView" destination="7Nw-Iv-QEd" id="Ifc-Qp-Gey"/>
-                                    <outlet property="memeTopAndBottomLabel" destination="QWy-zL-9OS" id="Lrf-6H-5qD"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -141,7 +119,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bj9-bP-nsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="368.80000000000001" y="-173.16341829085459"/>
+            <point key="canvasLocation" x="368.36581709145429" y="-173.59999999999999"/>
         </scene>
         <!--Meme Editor-->
         <scene sceneID="tne-QT-ifu">
@@ -330,6 +308,6 @@
         <image name="Table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XEl-U4-CBM"/>
+        <segue reference="sRk-vg-LFD"/>
     </inferredMetricsTieBreakers>
 </document>
