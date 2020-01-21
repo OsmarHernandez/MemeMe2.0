@@ -30,6 +30,19 @@ class SentMemesCollectionViewController: UICollectionViewController {
         
         collectionView.reloadData()
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        let space: CGFloat = 3.0
+        let width = view.frame.width
+        let height = view.frame.height
+        let dimension = { ($0 - (2 * space)) / 3.0 }
+        
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
+        flowLayout.itemSize = CGSize(width: dimension(width), height: dimension(height))
+    }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
