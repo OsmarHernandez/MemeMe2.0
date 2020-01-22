@@ -31,11 +31,8 @@ class MemeEditorViewController: UIViewController {
         
         subscribeToKeyboardNotifications()
         
-        topTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        
-        topTextField.textAlignment = .center
-        bottomTextField.textAlignment = .center
+        configureTextFields(topTextField)
+        configureTextFields(bottomTextField)
         
         actionButton.isEnabled = imagePickerView.image != nil
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -105,6 +102,11 @@ class MemeEditorViewController: UIViewController {
         navigationController?.popToRootViewController(animated: true)
     }
     
+    func configureTextFields(_ textField : UITextField) {
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .center
+    }
+    
     @objc func keyboardWillShow(_ notification: Notification) {
         if bottomTextField.isEditing {
             view.frame.origin.y = -getKeyboardHeight(notification)
@@ -164,6 +166,7 @@ extension MemeEditorViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             imagePickerView.image = image
+            actionButton.isEnabled = true
             dismiss(animated: true, completion: nil)
         }
     }

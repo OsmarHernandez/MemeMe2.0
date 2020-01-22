@@ -41,11 +41,12 @@ class SentMemesTableViewController: UITableViewController {
         let memeTableViewCell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)!
         let meme = memes[indexPath.row]
         
+        memeTableViewCell.textLabel?.textAlignment = .center
+        memeTableViewCell.textLabel?.minimumScaleFactor = 0.7
+        memeTableViewCell.imageView?.contentMode = .scaleAspectFit
+        
         memeTableViewCell.textLabel?.text = meme.topText + "..." + meme.bottomText
         memeTableViewCell.imageView?.image = meme.memedImage
-        
-         memeTableViewCell.textLabel?.textAlignment = .center
-        memeTableViewCell.imageView?.contentMode = .scaleAspectFit
         
         return memeTableViewCell
     }
